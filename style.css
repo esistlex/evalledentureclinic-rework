@@ -1,0 +1,274 @@
+/* ---------- Base ---------- */
+body {
+    font-family: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Nunito', 'DM Sans', sans-serif;
+}
+
+/* ---------- Navbar brand / logo ---------- */
+.navbar-logo {
+    width: 300px;
+    max-width: 100%;
+    height: auto;
+    margin-left: 1.5rem;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    min-width: 0;
+}
+
+/* ---------- Navbar links ---------- */
+.navbar-nav .nav-item .nav-link {
+    position: relative;
+    display: inline-block;
+    color: #1269B3;
+    font-weight: 700;
+    letter-spacing: .01em;
+    transition: color .25s ease, transform .25s ease;
+}
+
+/* Underline bar: hidden by default, slides in on hover, always shown on active page */
+.navbar-nav .nav-item .nav-link::after {
+    content: "";
+    position: absolute;
+    left: .5rem;
+    right: .5rem;
+    bottom: .15rem;
+    height: 3px;
+    border-radius: 2px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform .3s ease;
+}
+
+.navbar-nav .nav-item .nav-link:hover,
+.navbar-nav .nav-item .nav-link:focus-visible {
+    color: #0B4A80;
+    transform: translateY(-2px);
+}
+
+.navbar-nav .nav-item .nav-link:hover::after,
+.navbar-nav .nav-item .nav-link:focus-visible::after,
+.navbar-nav .nav-item .nav-link.active::after {
+    transform: scaleX(1);
+}
+
+.navbar-nav .nav-item .nav-link.active {
+    color: #1269B3;
+}
+
+.main-color {
+    color: #1269B3;
+}
+
+/* Hamburger button */
+.navbar-toggler {
+    transition: transform .2s ease;
+}
+.navbar-toggler:hover {
+    transform: scale(1.08);
+}
+
+/* ---------- Phone + Book an Appointment ---------- */
+.nav-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .4rem;
+    margin: .5rem 1.5rem .5rem 1rem;
+}
+
+.nav-phone {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color .25s ease;
+}
+
+.nav-phone .material-symbols-outlined {
+    font-size: 1.35rem;
+    transition: transform .3s ease;
+}
+
+.nav-phone:hover {
+    color: #0B4A80;
+}
+
+.nav-phone:hover .material-symbols-outlined {
+    animation: ring .6s ease;
+}
+
+.btn-book {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    background-color: #1269B3;
+    border: 2px solid #1269B3;
+    color: #fff;
+    font-weight: 700;
+    padding: .55rem 1.25rem;
+    border-radius: 999px;
+    white-space: nowrap;
+    transition: background-color .25s ease, border-color .25s ease,
+                transform .25s ease, box-shadow .25s ease;
+}
+
+.btn-book .material-symbols-outlined {
+    font-size: 1.35rem;
+    transition: transform .3s ease;
+}
+
+.btn-book:hover,
+.btn-book:focus-visible {
+    background-color: #0B4A80;
+    border-color: #0B4A80;
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(18, 105, 179, .35);
+}
+
+.btn-book:hover .material-symbols-outlined,
+.btn-book:focus-visible .material-symbols-outlined {
+    transform: scale(1.2) rotate(-8deg);
+}
+
+.btn-book:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 8px rgba(18, 105, 179, .3);
+}
+
+@keyframes ring {
+    0%, 100% { transform: rotate(0); }
+    20% { transform: rotate(-18deg); }
+    40% { transform: rotate(16deg); }
+    60% { transform: rotate(-12deg); }
+    80% { transform: rotate(8deg); }
+}
+
+/* ---------- Hero ---------- */
+.hero-title {
+    font-size: clamp(1.75rem, 5vw + .5rem, 3rem);
+}
+
+.hero-text {
+    max-width: 48rem;
+}
+
+/* ---------- Mobile / tablet: hamburger + drawer (below 992px) ---------- */
+@media (max-width: 991.98px) {
+    .navbar-logo {
+        width: 180px;
+        margin-left: .25rem;
+    }
+
+    .drawer .navbar-nav {
+        gap: .25rem;
+    }
+
+    .nav-contact {
+        width: 100%;
+        margin: .5rem 0 .25rem;
+    }
+
+    .btn-book {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .drawer .navbar-nav .nav-link {
+        font-size: 1.15rem;
+        padding: .6rem .5rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .navbar-logo {
+        width: 140px;
+    }
+
+    /* The logo already shows the clinic name, so hide the duplicate text on small phones */
+    .brand-text {
+        display: none;
+    }
+
+    .hero-title {
+        margin-top: 2rem !important;
+    }
+}
+
+/* ---------- Desktop: show links inline in the navbar (992px and up) ---------- */
+@media (min-width: 992px) {
+    .navbar-toggler {
+        display: none;
+    }
+
+    /* The menu lives in a <dialog>, so force it to behave like a normal inline block */
+    #navbarNav.drawer {
+        display: flex !important;
+        position: static !important;
+        inset: auto !important;
+        transform: none !important;
+        visibility: visible !important;
+        width: auto !important;
+        height: auto !important;
+        max-width: none !important;
+        max-height: none !important;
+        margin: 0 0 0 auto;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    #navbarNav .drawer-header {
+        display: none;
+    }
+
+    #navbarNav .drawer-body {
+        display: flex;
+        padding: 0;
+        overflow: visible;
+    }
+
+    #navbarNav .navbar-nav {
+        flex-direction: row;
+        gap: 1rem;
+    }
+}
+
+/* ---------- Respect reduced-motion preferences ---------- */
+@media (prefers-reduced-motion: reduce) {
+    .navbar-nav .nav-item .nav-link,
+    .navbar-nav .nav-item .nav-link::after,
+    .navbar-toggler {
+        transition: none;
+    }
+    .navbar-nav .nav-item .nav-link:hover,
+    .navbar-toggler:hover,
+    .btn-book,
+    .btn-book:hover,
+    .btn-book:focus-visible,
+    .btn-book:hover .material-symbols-outlined,
+    .btn-book:focus-visible .material-symbols-outlined {
+        transform: none;
+    }
+    .btn-book,
+    .btn-book .material-symbols-outlined,
+    .nav-phone,
+    .nav-phone .material-symbols-outlined {
+        transition: none;
+    }
+    .nav-phone:hover .material-symbols-outlined {
+        animation: none;
+    }
+}
