@@ -1,4 +1,7 @@
 /* ---------- Base ---------- */
+:root {
+    --brand: #1269B3;
+}
 body {
     font-family: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
     overflow-x: hidden;
@@ -140,9 +143,8 @@ h1, h2, h3, h4, h5, h6 {
 .btn-book:focus-visible {
     background-color: #0B4A80;
     border-color: #0B4A80;
-    color: #fff;
     transform: translateY(-3px);
-    box-shadow: 0 8px 18px rgba(18, 105, 179, .35);
+    box-shadow: 0 8px 16px rgba(18, 105, 179, .3);
 }
 
 .btn-book:hover .material-symbols-outlined,
@@ -169,9 +171,8 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     overflow: hidden;
-    /* Image is 2400x1350 (16:9): keep that shape on desktop, but never get too short for the text */
     min-height: clamp(480px, 56.25vw, 720px);
-    background-color: #0B4A80; /* shows while the image loads */
+    background-color: #0B4A80;
     color: #fff;
     isolation: isolate;
 }
@@ -215,7 +216,6 @@ h1, h2, h3, h4, h5, h6 {
     text-shadow: 0 2px 12px rgba(0, 0, 0, .35);
 }
 
-/* Each sentence stays whole; the browser only wraps between sentences */
 .nowrap-phrase {
     display: inline-block;
 }
@@ -228,8 +228,6 @@ h1, h2, h3, h4, h5, h6 {
     text-shadow: 0 1px 8px rgba(0, 0, 0, .35);
 }
 
-/* Manual line breaks in the paragraph only apply on wider screens;
-   on phones the text just wraps naturally */
 .br-md {
     display: none;
 }
@@ -241,9 +239,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ---------- Services ---------- */
-.services {
+.services-section {
     padding: clamp(3rem, 6vw, 5rem) 0;
-    background-color: #F3F8FC;
+    background-color: #FFF;
 }
  
 .services-header {
@@ -265,7 +263,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #4A6075;
 }
  
-/* ---------- Grid: 1 → 2 → 3 → 6 cards per row ---------- */
+/* ---------- Services Grid ---------- */
 .services-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -315,7 +313,7 @@ h1, h2, h3, h4, h5, h6 {
 .service-media {
     overflow: hidden;
     aspect-ratio: 4 / 3;
-    background-color: #D9E8F5; /* shows if an image is missing */
+    background-color: #D9E8F5; 
 }
  
 .service-img {
@@ -334,10 +332,10 @@ h1, h2, h3, h4, h5, h6 {
 .service-body {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: .75rem;
     flex: 1;
-    padding: 1rem 1rem 1.1rem;
+    padding: 1rem;
 }
  
 .service-name {
@@ -345,6 +343,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.05rem;
     font-weight: 800;
     line-height: 1.25;
+    text-align: center;
     color: #0B4A80;
 }
  
@@ -398,7 +397,80 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/* ---------- Mobile / tablet: hamburger + drawer (below 992px) ---------- */
+/* ---------- Inverse Button ---------- */
+.btn-custom {
+    --bs-btn-color: #1269B3;
+    --bs-btn-bg: #ffffff;
+    --bs-btn-border-color: #1269B3;
+    --bs-btn-border-width: 2px;
+    --bs-btn-border-radius: 50rem;
+
+    --bs-btn-hover-color: #ffffff;
+    --bs-btn-hover-bg: #1269B3;
+    --bs-btn-hover-border-color: #1269B3;
+
+    --bs-btn-active-color: #ffffff;
+    --bs-btn-active-bg: #0e5391;
+    --bs-btn-active-border-color: #0e5391;
+
+    --bs-btn-focus-shadow-rgb: 18, 105, 179;
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease,
+                background-color 0.25s ease, color 0.25s ease;
+}
+
+.btn-custom:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(18, 105, 179, 0.3);
+}
+
+.btn-custom:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* Arrow slides right on hover */
+.btn-custom .bi {
+    transition: transform 0.25s ease;
+}
+.btn-custom:hover .bi {
+    transform: translateX(4px);
+}
+
+/* ---------- About Section ---------- */
+.about-section { padding: 4rem 0; }
+.about-title { color: var(--brand); font-weight: 700; }
+.about-heading { font-size: clamp(1.75rem, 1.2vw + 1.35rem, 2.5rem); line-height: 1.2; }
+.denturist-img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+.denturist-subtitle { color: var(--brand); font-weight: 600; }
+.about-text { line-height: 1.6; font-size: .95rem; }
+
+/* Image + text sit side by side inside each half; image stays small so the text has room */
+.about-card {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+.about-card .denturist-img {
+    flex: 0 0 34%;
+    width: 34%;
+    max-width: 190px;
+}
+.about-card-body { flex: 1 1 0; min-width: 0; }
+
+/* Phones: stack image above text */
+@media (max-width: 575.98px) {
+    .about-card { flex-direction: column; align-items: stretch; }
+    .about-card .denturist-img { width: 100%; max-width: 280px; margin-inline: auto; }
+}
+
+
+/* ---------- Mobile / tablet: hamburger + drawer ---------- */
 @media (max-width: 991.98px) {
     .navbar-logo {
         width: 180px;
@@ -430,12 +502,10 @@ h1, h2, h3, h4, h5, h6 {
         width: 140px;
     }
 
-    /* The logo already shows the clinic name, so hide the duplicate text on small phones */
     .brand-text {
         display: none;
     }
 
-    /* Text covers the whole image on phones, so darken it evenly */
     .hero::before {
         background: linear-gradient(180deg,
             rgba(8, 44, 78, .80) 0%,
@@ -448,8 +518,6 @@ h1, h2, h3, h4, h5, h6 {
     .navbar-toggler {
         display: none;
     }
-
-    /* The menu lives in a <dialog>, so force it to behave like a normal inline block */
     #navbarNav.drawer {
         display: flex !important;
         position: static !important;
@@ -483,7 +551,6 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/* ---------- Respect reduced-motion preferences ---------- */
 @media (prefers-reduced-motion: reduce) {
     .navbar-nav .nav-item .nav-link,
     .navbar-nav .nav-item .nav-link::after,
