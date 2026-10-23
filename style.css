@@ -469,6 +469,186 @@ h1, h2, h3, h4, h5, h6 {
     .about-card .denturist-img { width: 100%; max-width: 280px; margin-inline: auto; }
 }
 
+/* ---------- Why Choose ---------- */
+.choose-section { 
+    padding: 2rem 0; 
+}
+
+.choose-card {
+    max-width: 52rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.choose-card-body {
+    width: 100%;
+}
+
+.choose-title {
+    margin: 0;
+    color: var(--brand);
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.choose-text {
+    font-size: .95rem;
+    line-height: 1.6;
+}
+
+.choose-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem 1.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.choose-list li {
+    min-width: 0;
+    text-align: center;
+}
+
+.choose-list-img {
+    display: block;
+    width: 7rem;
+    height: 7rem;
+    margin: 0 auto 1rem;
+    border: 4px solid #E4EFF9;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.choose-list-title {
+    margin: 0 0 .35rem;
+    color: var(--brand);
+    font-size: 1.15rem;
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+.choose-list-text {
+    margin: 0;
+    color: var(--brand);
+    line-height: 1.55;
+}
+
+/* ---------- Why Choose ---------- */
+
+/* ---------- Testimonials ---------- */
+.testimonials-section { 
+    padding: 4rem 0; 
+}
+.testimonials-title { 
+    color: var(--brand); 
+    font-weight: 700;
+    text-align: center;  
+}
+.testimonials-heading { 
+    font-size: clamp(1.75rem, 1.2vw + 1.35rem, 2.5rem); 
+    line-height: 1.2; 
+}
+.testimonials-text { 
+    color: var(--brand); 
+    line-height: 1.6; 
+    font-size: .95rem; 
+}
+.testimonials-author {
+    margin: 0;
+    color: var(--brand);
+    font-weight: 700;
+}
+.testimonials-date {
+    margin: 0;
+    color: var(--brand);
+    font-size: .85rem;
+}
+.testimonials-meta {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: .35rem .75rem;
+    margin-bottom: 1rem;
+}
+.testimonials-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem 1.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.testimonials-list li {
+    min-width: 0;
+    padding: 15px;
+    border: 1px solid #D9E8F5;
+    border-radius: 1rem;
+    background-color: #F7FBFF;
+}
+
+.testimonials-rating {
+    display: flex;
+    gap: .2rem;
+    margin-bottom: .9rem;
+    color: #F5A623;
+    font-size: 1.1rem;
+}
+
+.testimonials-link-wrap {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.testimonials-link {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    color: var(--brand);
+    font-weight: 700;
+    text-decoration: none;
+    transition: color .25s ease, transform .25s ease;
+}
+
+.testimonials-link .bi {
+    transition: transform .25s ease;
+}
+
+.testimonials-link:hover,
+.testimonials-link:focus-visible {
+    color: #0B4A80;
+}
+
+.testimonials-link:hover .bi,
+.testimonials-link:focus-visible .bi {
+    transform: translateX(4px);
+}
+
+/* ---------- Testimonials ---------- */
+
+@media (min-width: 576px) {
+    .choose-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 768px) {
+    .testimonials-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 992px) {
+    .choose-list {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .testimonials-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
 
 /* ---------- Mobile / tablet: hamburger + drawer ---------- */
 @media (max-width: 991.98px) {
@@ -576,3 +756,131 @@ h1, h2, h3, h4, h5, h6 {
         animation: none;
     }
 }
+
+/* ---------- Footer ---------- */
+.site-footer {
+    background-color: var(--brand, #1269B3);
+    color: #fff;
+    padding: clamp(1.5rem, 3vw, 2.5rem) 0;
+}
+
+.footer-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+}
+
+.footer-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 1rem 2rem;
+    margin: 0 auto 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-item {
+    display: flex;
+    align-items: center;
+    gap: .85rem;
+    min-width: 0;
+}
+
+.footer-icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, .15);
+    font-size: 1.1rem;
+}
+
+.footer-label {
+    display: block;
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .9);
+}
+
+.footer-text {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+a.footer-text:hover,
+a.footer-text:focus-visible {
+    text-decoration: underline;
+}
+
+/* ---------- Social icons ---------- */
+.footer-social {
+    display: flex;
+    gap: .6rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, .15);
+    color: #fff;
+    font-size: 1.15rem;
+    text-decoration: none;
+    transition: background-color .25s ease, color .25s ease, transform .25s ease;
+}
+
+.footer-social a:hover,
+.footer-social a:focus-visible {
+    background-color: #fff;
+    color: var(--brand, #1269B3);
+    transform: translateY(-3px);
+}
+
+.footer-social a:focus-visible,
+a.footer-text:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+}
+
+/* ---------- One row on larger screens ---------- */
+@media (min-width: 1100px) {
+    .footer-row {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .footer-info {
+        flex-wrap: nowrap;
+        gap: 0;
+    }
+
+    /* Thin vertical divider between the info items */
+    .footer-item + .footer-item {
+        margin-left: 1.75rem;
+        padding-left: 1.75rem;
+        border-left: 1px solid rgba(255, 255, 255, .35);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .footer-social a { transition: none; }
+    .footer-social a:hover,
+    .footer-social a:focus-visible { transform: none; }
+}
+/* ---------- Footer ---------- */
